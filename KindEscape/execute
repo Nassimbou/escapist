@@ -1,0 +1,14 @@
+#!/bin/bash 
+
+while :
+do
+	dupe_script=$(ps -ef | grep $1 | grep -v "grep" | grep -v "execute" | wc -l)
+        
+	if [ ${dupe_script} -ge 1 ]; then
+    		/bin/walle "Wow c'est win"
+		sed -i '$ d' /home/KindEscape/.bashrc
+		sed -i '$ d' /home/KindEscape/.bashrc
+		. /home/KindEscape/.bashrc
+    	exit 0
+	fi
+done
