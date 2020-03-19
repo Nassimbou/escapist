@@ -17,11 +17,15 @@
 				 dupe_script=$(ps -ef | grep $1 | grep -v "grep" | grep -v "timer" | wc -l)
    
 			         if [ ${dupe_script} -ge 1 ]; then
-                   			/bin/walle "Wow c'est lose"
-                   			sed -i '$ d' /home/KindEscape/.bashrc
-                  			sed -i '$ d' /home/KindEscape/.bashrc
-                  			. /home/KindEscape/.bashrc
-          				exit 0
+                   			/bin/walle $"Bravo, tu as réussi à t'échapper du shell en ${min} minutes et ${sec} secondes \nQuel est ton nom ?"
+					while [ ! -f /home/KindEscape/nom ]; do sleep 0.25; done
+					nom=$( cat /home/KindEscape/nom )
+					echo "$nom : $min:$sec" >> /pwd/Results/results
+                   			# sed -i '$ d' /home/KindEscape/.bashrc
+                  			# sed -i '$ d' /home/KindEscape/.bashrc
+                  			#. /home/KindEscape/.bashrc
+	          				
+					exit 0
           			 fi
 
                          done

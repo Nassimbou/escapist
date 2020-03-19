@@ -1,8 +1,5 @@
 # escapist
 
-sudo docker stop ctf \
-sudo docker build -t ctf . \
-sudo docker run --rm -v --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name ctf -i ctf \
-sudo docker run -t -i ctf\
+Pour lancer le premier challenge : ./run.sh\
 
-docker exec -it ctf /bin/rbash
+L'objectif est de réussir à exécuter le binaire "escape"
