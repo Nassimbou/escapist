@@ -1,6 +1,6 @@
 # escapist
 
-Pour lancer le premier challenge : sudo ./Challengex.sh
+Pour lancer le premier challenge : sudo ./Challenge*numéro*.sh
 
 L'objectif est de réussir à exécuter le binaire "escape" dans chaque épreuve
 
