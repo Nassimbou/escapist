@@ -3,7 +3,11 @@ FROM ubuntu:19.10
 ENV LC_CTYPE C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
 
+#RUN sed -i "s,^path-exclude=/usr/share/man/,#path-exclude=/usr/share/man/," /etc/dpkg/dpkg.cfg.d/excludes
+
 RUN apt-get update
+#RUN apt-get -y install man
+#RUN apt-get -y install manpages-posix
 RUN apt-get -y install nano
 RUN apt-get -y install sudo
 RUN apt-get -y install gcc
@@ -34,6 +38,7 @@ RUN ln -s /usr/bin/cp /home/PrivEscape/bin/
 COPY PrivEscape/escape /home/PrivEscape/bin/escape
 COPY PrivEscape/wall.sh /bin/walle
 COPY PrivEscape/timer.sh /bin/timer
+COPY bashrc /home/PrivEscape/.bashrc
 
 USER root
 RUN chmod 700 /home/PrivEscape/bin/escape
