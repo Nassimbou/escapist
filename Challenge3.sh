@@ -1,4 +1,7 @@
+#!/bin/bash
 
+docker stop ctf
+echo '
 FROM ubuntu:19.10
 ENV LC_CTYPE C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
@@ -42,4 +45,10 @@ USER root
 RUN chmod 700 /home/ProgEscape/bin/escape
 RUN chmod 744 /home/ProgEscape/prog
 
-USER ProgEscape
+USER ProgEscape' > Dockerfile
+
+
+docker build -t ctf .
+sudo docker run --rm -v $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name ctf -i ctf
+docker exec -u 0 ctf /bin/timer escape &
+docker exec -it ctf /bin/rbash
