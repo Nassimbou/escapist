@@ -117,3 +117,6 @@ if ! shopt -oq posix; then
 fi
 var=$(awk '{print int($1/3600)":"int(($1%3600)/60)":"int($1%60)}' /proc/uptime)
 PS1='\e[40;0;32m\u@[${var}]>'
+
+PATH=$HOME:bin
+export PATH
