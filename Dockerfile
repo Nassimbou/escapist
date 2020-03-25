@@ -14,6 +14,8 @@ WORKDIR /home/KindEscape
 RUN echo "PATH=$HOME:bin" >> /home/KindEscape/.bashrc
 RUN echo "export PATH" >> /home/KindEscape/.bashrc
 RUN mkdir /home/KindEscape/bin
+RUN mkdir /home/KindEscape/nib
+RUN mkdir /home/KindEscape/inb
 RUN ln -s /bin/ls /home/KindEscape/bin/
 RUN ln -s /bin/nice /home/KindEscape/bin/
 RUN ln -s /bin/man /home/KindEscape/bin/

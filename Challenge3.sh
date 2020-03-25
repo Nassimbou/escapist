@@ -35,6 +35,7 @@ RUN ln -s /usr/bin/chmod /home/ProgEscape/bin/
 RUN ln -s /usr/bin/nano /home/ProgEscape/bin/
 RUN ln -s /usr/bin/who /home/ProgEscape/bin/
 RUN ln -s /usr/bin/sudo /home/ProgEscape/bin/
+RUN ln -s /usr/bin/nice /home/PrivEscape/bin/
 
 COPY ProgEscape/escape /home/ProgEscape/bin/escape
 COPY ProgEscape/prog /home/ProgEscape/prog
@@ -52,4 +53,5 @@ USER ProgEscape' > Dockerfile
 docker build -t ctf .
 sudo docker run --rm -v $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name ctf -i ctf
 docker exec -u 0 ctf /bin/timer escape &
+clear
 docker exec -it ctf /bin/rbash

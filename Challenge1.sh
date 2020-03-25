@@ -17,6 +17,8 @@ WORKDIR /home/KindEscape
 RUN echo "PATH=$HOME:bin" >> /home/KindEscape/.bashrc
 RUN echo "export PATH" >> /home/KindEscape/.bashrc
 RUN mkdir /home/KindEscape/bin
+RUN mkdir /home/KindEscape/nib
+RUN mkdir /home/KindEscape/inb
 RUN ln -s /bin/ls /home/KindEscape/bin/
 RUN ln -s /bin/nice /home/KindEscape/bin/
 RUN ln -s /bin/man /home/KindEscape/bin/
@@ -30,4 +32,5 @@ COPY bashrc /home/KindEscape/.bashrc' > Dockerfile
 docker build -t ctf .
 sudo docker run --rm -v $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name ctf -i ctf
 docker exec -u 0 ctf /bin/timer escape &
+clear
 docker exec -it ctf /bin/rbash

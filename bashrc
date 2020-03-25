@@ -91,6 +91,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias sudo='sudo -n'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -115,8 +116,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-var=$(awk '{print int($1/3600)":"int(($1%3600)/60)":"int($1%60)}' /proc/uptime)
-PS1='\e[40;0;32m\u@[${var}]>'
+
+PS1='\e[40;0;32m\u>\e[40;0;36m'
 
 PATH=$HOME:bin
 export PATH
