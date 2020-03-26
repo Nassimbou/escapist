@@ -13,9 +13,9 @@ echo "
 "
 echo $'\n'
 
-echo $'L\'objectif de ces challenges est de réussir à exécuter le binaire bin/escape' 
+echo $'L\'objectif de ces challenges est de réussir à exécuter le fichier binaire bin/escape.' 
 echo $'Pour cela tu seras placé dans un environnement restreint, avec seulement certains
-fichiers binaires à ta disposition' 
+fichiers binaires exécutable à ta disposition. Bonne chance !' 
 
 echo $'\n'
 echo $'\n'
@@ -27,6 +27,7 @@ echo $'\t       Nom      \t Difficulté'
 echo $'\t[1] KindEscape\t\t[-         ]'
 echo $'\t[2] PrivEscape\t\t[--        ]'
 echo $'\t[3] ProgEscape\t\t[--        ]'
+echo $'\t[4] ProgEscape\t\t[---       ]'
 
 echo $'\n'
 echo $'Quel est le numéro du challenge auquel tu veux jouer ?'
@@ -39,7 +40,7 @@ do
 	read var
 done
 
-while [ "$var" -le 0 ] || [ "$var" -ge 4 ];
+while [ "$var" -le 0 ] || [ "$var" -ge 5 ];
 do
 	echo 'Saisie incorrect, ressaisir'	
 	read var

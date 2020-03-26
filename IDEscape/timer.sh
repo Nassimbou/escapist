@@ -3,7 +3,7 @@
  min=0
  sec=0
 
-echo "while nice /bin/sleep 1;do nice /usr/bin/tput sc;nice /usr/bin/tput cup 0 \$((\$(/usr/bin/tput cols)-11));nice /usr/bin/ps -o etime= -p \"\$\$\";nice /usr/bin/tput rc;done &" >> /home/ProgEscape/.bashrc
+echo "while nice /bin/sleep 1;do nice /usr/bin/tput sc;nice /usr/bin/tput cup 0 \$((\$(/usr/bin/tput cols)-11));nice /usr/bin/ps -o etime= -p \"\$\$\";nice /usr/bin/tput rc;done &" >> /home/IDEscape/.bashrc
         while [ $hour -le 59 ]; do
                  while [ $min -le 59 ]; do
 			if [ $min -eq 1 ]
@@ -31,9 +31,9 @@ echo "while nice /bin/sleep 1;do nice /usr/bin/tput sc;nice /usr/bin/tput cup 0 
    
 			         if [ ${dupe_script} -ge 1 ]; then
                    			/bin/walle $"Bravo, tu as réussi à t'échapper du shell en ${min} minutes et ${sec} secondes \nQuel est ton nom ?"
-					while [ ! -f /home/ProgEscape/nom ]; do sleep 0.25; done
-					nom=$( cat /home/ProgEscape/nom )
-					echo "$nom : $min:$sec" >> /pwd/Results/ProgEscape
+					while [ ! -f /home/IDEscape/nom ]; do sleep 0.25; done
+					nom=$( cat /home/IDEscape/nom )
+					echo "$nom : $min:$sec" >> /pwd/Results/IDEscape
                    			# sed -i '$ d' /home/KindEscape/.bashrc
                   			# sed -i '$ d' /home/KindEscape/.bashrc
                   			#. /home/KindEscape/.bashrc

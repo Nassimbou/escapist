@@ -1,0 +1,27 @@
+NAME         top
+       cancel - cancel jobs
+SYNOPSIS         top
+       cancel [ -E ] [ -U username ] [ -a ] [ -h hostname[:port] ] [ -u
+       username ] [ -x ] [ id ] [ destination ] [ destination-id ]
+DESCRIPTION         top
+       The cancel command cancels print jobs.  If no destination or id is
+       specified, the currently printing job on the default destination is
+       canceled.
+OPTIONS         top
+       The following options are recognized by cancel:
+
+       -a   Cancel all jobs on the named destination, or all jobs on all
+            destinations if none is provided.
+
+       -E   Forces encryption when connecting to the server.
+
+       -h hostname[:port]
+            Specifies an alternate server.
+
+       -U username
+            Specifies the username to use when connecting to the server.
+
+       -u username
+            Cancels jobs owned by username.
+
+       -x   Deletes job data files in addition to canceling.

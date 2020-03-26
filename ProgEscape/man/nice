@@ -1,0 +1,13 @@
+Name
+nice - run a program with modified scheduling priority
+Synopsis
+nice [OPTION] [COMMAND [ARG]...]
+Description
+Run COMMAND with an adjusted niceness, which affects process scheduling. With no COMMAND, print the current niceness. Nicenesses range from -20 (most favorable scheduling) to 19 (least favorable).
+
+-n, --adjustment=N
+add integer N to the niceness (default 10)
+--help
+display this help and exit
+--version
+output version information and exit

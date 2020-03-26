@@ -1,0 +1,53 @@
+NOM
+       cat  - Concaténer des fichiers et les afficher sur la sor­
+       tie standard.
+
+SYNOPSIS
+       cat    [-benstuvAET]    [--number]     [--number-nonblank]
+       [--squeeze-blank]    [--show-nonprinting]    [--show-ends]
+       [--show-tabs]    [--show-all]     [--help]     [--version]
+       [fichier...]
+
+DESCRIPTION
+       Cette page de manuel documente la version GNU de cat.
+
+       cat  affiche  sur  la sortie standard le contenu de chacun
+       des fichiers indiqués (ou le contenu de l'entrée  standard
+       si aucun nom de fichier n'est fourni, ou si le nom `-' est
+       indiqué).
+
+   OPTIONS
+       -b, --number-nonblank
+              Numéroter en sortie les  lignes  non  blanches,  en
+              commençant à 1.
+
+       -e     Equivalent à -vE.
+
+       -n, --number
+              Numéroter  les lignes en sortie, en commençant à 1.
+
+       -s, --squeeze-blank
+              Remplacer les lignes blanches consécutives par  une
+              seule ligne blanche.
+
+       -t     Equivalent à -vT.
+
+       -u     Sans effet - pour compatibilité Unix seulement.
+
+       -v, --show-nonprinting
+              Afficher  les  caractères  de  contrôles,  sauf les
+              sauts de ligne et les tabulations en  utilisant  la
+              notation  `^', et préfixer avec `M-' les caractères
+              ayant leur huitième bit positionné.
+
+       -A, --show-all
+              Equivalent à -vET.
+
+       -E, --show-ends
+              Afficher un `$' à la fin de chaque ligne.
+
+       -T, --show-tabs
+              Afficher le caractère TAB ainsi : `^I'.
+
+       --help Afficher un message d'aide sur la  sortie  standard
+              et terminer normalement.

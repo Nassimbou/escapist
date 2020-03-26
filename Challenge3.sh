@@ -24,6 +24,7 @@ WORKDIR /home/ProgEscape
 RUN echo "PATH=$HOME:bin" >> /home/ProgEscape/.bashrc
 RUN echo "export PATH" >> /home/ProgEscape/.bashrc
 RUN mkdir /home/ProgEscape/bin
+RUN mkdir /home/ProgEscape/man
 RUN ln -s /bin/ls /home/ProgEscape/bin/
 RUN ln -s /bin/gcc /home/ProgEscape/bin/
 RUN ln -s /bin/man /home/ProgEscape/bin/
@@ -35,13 +36,24 @@ RUN ln -s /usr/bin/chmod /home/ProgEscape/bin/
 RUN ln -s /usr/bin/nano /home/ProgEscape/bin/
 RUN ln -s /usr/bin/who /home/ProgEscape/bin/
 RUN ln -s /usr/bin/sudo /home/ProgEscape/bin/
-RUN ln -s /usr/bin/nice /home/PrivEscape/bin/
+RUN ln -s /usr/bin/nice /home/ProgEscape/bin/
 
 COPY ProgEscape/escape /home/ProgEscape/bin/escape
 COPY ProgEscape/prog /home/ProgEscape/prog
 COPY ProgEscape/wall.sh /bin/walle
 COPY ProgEscape/timer.sh /bin/timer
 COPY bashrc /home/ProgEscape/.bashrc
+
+COPY IDEscape/man/base64 /home/ProgEscape/man
+COPY IDEscape/man/cancel /home/ProgEscape/man
+COPY IDEscape/man/cat /home/ProgEscape/man
+COPY IDEscape/man/chmod /home/ProgEscape/man
+COPY IDEscape/man/cp /home/ProgEscape/man
+COPY IDEscape/man/gcc /home/ProgEscape/man
+COPY IDEscape/man/make /home/ProgEscape/man
+COPY IDEscape/man/nano /home/ProgEscape/man
+COPY IDEscape/man/nice /home/ProgEscape/man
+COPY IDEscape/man/who /home/ProgEscape/man
 
 USER root
 RUN chmod 700 /home/ProgEscape/bin/escape

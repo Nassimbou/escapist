@@ -1,7 +1,4 @@
-#!/bin/bash
 
-docker stop ctf
-echo '
 FROM ubuntu:19.10
 ENV LC_CTYPE C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
@@ -21,7 +18,6 @@ RUN useradd -d /home/PrivEscape/ -m -p PrivEscape -s /bin/rbash PrivEscape
 RUN chmod 755 /home/PrivEscape 
 
 RUN echo "PrivEscape ALL=NOPASSWD: /usr/bin/nano" >> /etc/sudoers
-RUN echo "#PrivEscape ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 RUN echo "This is an important message" > /home/PrivEscape/readme
 
 USER PrivEscape
@@ -38,8 +34,6 @@ RUN ln -s /usr/bin/sudo /home/PrivEscape/bin/
 RUN ln -s /usr/bin/cancel /home/PrivEscape/bin/
 RUN ln -s /usr/bin/awk /home/PrivEscape/bin/
 RUN ln -s /usr/bin/cp /home/PrivEscape/bin/
-RUN ln -s /usr/bin/nice /home/PrivEscape/bin/
-RUN ln -s /usr/bin/rnano /home/PrivEscape/bin/nano
 
 COPY PrivEscape/escape /home/PrivEscape/bin/escape
 COPY PrivEscape/wall.sh /bin/walle
@@ -49,11 +43,4 @@ COPY bashrc /home/PrivEscape/.bashrc
 USER root
 RUN chmod 700 /home/PrivEscape/bin/escape
 
-USER PrivEscape' > Dockerfile
-
-
-docker build -t ctf .
-sudo docker run --rm -v $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name ctf -i ctf
-docker exec -u 0 ctf /bin/timer escape &
-clear
-docker exec -it ctf /bin/rbash
+USER PrivEscape
