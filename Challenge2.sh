@@ -53,7 +53,7 @@ USER PrivEscape' > Dockerfile
 
 
 docker build -t ctf .
-sudo docker run --rm -v $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name ctf -i ctf
-docker exec -u 0 ctf /bin/timer escape &
+sudo docker run --init --rm -v $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name ctf -i ctf
 clear
+docker exec -u 0 ctf /bin/timer escape &
 docker exec -it ctf /bin/rbash

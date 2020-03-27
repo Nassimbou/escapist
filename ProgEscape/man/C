@@ -1,0 +1,44 @@
+C functions are basic building blocks in a program. All C programs are written using functions to improve re-usability, understandability and to keep track on them. You can learn below concepts of C functions in this section in detail.
+
+C functions aspects
+syntax
+function definition	
+Return_type function_name (arguments list)
+{ Body of function; }
+
+function call	function_name (arguments list);
+function declaration	return_type function_name (argument list);
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main() {
+
+	//your functions
+	return 0;
+
+}
+
+
+#include<stdio.h>
+// function prototype, also called function declaration
+float square ( float x );                               
+// main function, program starts from here
+ 
+int main( )               
+{
+    float m, n ;
+    printf ( "\nEnter some number for finding square \n");
+    scanf ( "%f", &m ) ;
+    // function call
+    n = square ( m ) ;                      
+    printf ( "\nSquare of the given number %f is %f",m,n );
+}
+ 
+float square ( float x )   // function definition
+{
+    float p ;
+    p = x * x ;
+    return ( p ) ;
+}

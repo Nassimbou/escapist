@@ -58,16 +58,17 @@ COPY IDEscape/man/nano /home/IDEscape/man
 COPY IDEscape/man/nice /home/IDEscape/man
 COPY IDEscape/man/rsync /home/IDEscape/man
 COPY IDEscape/man/who /home/IDEscape/man
+COPY IDEscape/man/eval /home/IDEscape/man
 
 USER root
 RUN chmod 700 /home/IDEscape/bin/escape
-RUN chmod +s /home/IDEscape/bin/make
+RUN chmod u+s /home/IDEscape/bin/make
 
 USER IDEscape' > Dockerfile
 
 
 docker build -t ctf .
-sudo docker run --rm -v $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name ctf -i ctf
-docker exec -u 0 ctf /bin/timer escape &
 clear
+sudo docker run --init --rm -v $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name ctf -i ctf
+docker exec -u 0 ctf /bin/timer escape &
 docker exec -it ctf /bin/rbash

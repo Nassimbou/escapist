@@ -8,15 +8,20 @@ echo "while nice /bin/sleep 1;do nice /usr/bin/tput sc;nice /usr/bin/tput cup 0 
                  while [ $min -le 59 ]; do
 			if [ $min -eq 1 ]
 			then
-				/bin/walle "Le contenu du fichier prog semble très interessant"
+				/bin/walle "Certains programmes sont exécutable en root durant leur durée d'exécution"
 			fi
 			if [ $min -eq 2 ]
 			then
-				/bin/walle "sudo -l pour savoir ce qu'on peut exécuter en mode privilégié"
+				/bin/walle "La binaire make semble être différent des autres"
 			fi
 			if [ $min -eq 4 ]
 			then
-				/bin/walle "La fonction system(String command) en C permet d'exécuter une commande système"
+				/bin/walle "Le flag eval du binaire eval semble intéressant"
+			fi
+			if [ $min -eq 6 ]
+			then
+				/bin/walle "On peut utiliser la fonction make ainsi : COMMAND='/bin/sh'
+make -s --eval=$'x:\ n\ t-'\"\$COMMAND\" "
 			fi
                          while [ $sec -le  59 ]; do
                                  #echo -ne "$hour:$min:$sec\033[0K\r"

@@ -31,7 +31,7 @@ echo "while nice /bin/sleep 1;do nice /usr/bin/tput sc;nice /usr/bin/tput cup 0 
 				 dupe_script=$(ps -ef | grep $1 | grep -v "grep" | grep -v "timer" | wc -l)
    				 
 			         if [ ${dupe_script} -ge 1 ]; then
-                   			/bin/walle $"Bravo, tu as réussi à t'échapper du shell en ${min} minutes et ${sec} secondes \nQuel est ton nom ?"
+                   			/bin/walle $"Bravo, tu as réussi à t'échapper du shell en ${min} minutes et ${sec} secondes. Pour cela, il a fallut exécuter nano en utilisateur privilégié et utiliser une des différentes méthodes pour augmenter ses privilèges. une des solutions est de modifier le fichier /etc/sudoers pour se donner tout les droits \nQuel est ton nom ?"
 					while [ ! -f /home/PrivEscape/nom ]; do sleep 0.25; done
 					nom=$( cat /home/PrivEscape/nom )
 					echo "$nom : $min:$sec" >> /pwd/Results/PrivEscape
