@@ -21,14 +21,10 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         response.write(b'Received: ')
         response.write(body)
         self.wfile.write(response.getvalue())
-        print("test")
         loaded_json=json.loads(body)
-        for x in loaded_json:
-            print("%s: %d" % (x, loaded_json[x]))
-        #st=body
-	#str1="echo "
-	#str2=str+" > pwd"
-	#os.system(str2)
+        print(loaded_json)
+        with open('results.txt', 'a') as outfile:
+            json.dump(loaded_json, outfile) 
 
 
 httpd = HTTPServer(('0.0.0.0', 8080), SimpleHTTPRequestHandler)
