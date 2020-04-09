@@ -52,4 +52,4 @@ do
 	done
 done
 echo '[+] Chargement en cours'
-./Challenge${var}.sh
+Challenges/Challenge${var}.sh

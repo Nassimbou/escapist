@@ -40,10 +40,10 @@ RUN ln -s /usr/bin/ls /home/KindEscape/nib/lua
 COPY KindEscape/escape /home/KindEscape/bin/escape
 COPY KindEscape/wall.sh /bin/walle
 COPY KindEscape/timer.sh /bin/timer
-COPY bashrc /home/KindEscape/.bashrc' > Dockerfile
+COPY bashrc /home/KindEscape/.bashrc' > ../Dockerfile
 
 docker build -t ctf .
-sudo docker run --init --rm -v $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name ctf -i ctf
+docker run --init --rm -v $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name ctf -i ctf
 clear
 docker exec -u 0 ctf /bin/timer escape &
 docker exec -it ctf /bin/rbash
