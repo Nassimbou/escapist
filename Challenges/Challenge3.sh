@@ -7,6 +7,8 @@ ENV LC_CTYPE C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update
+RUN apt-get -y install libcurl4-gnutls-dev
+RUN apt-get -y install curl
 RUN apt-get -y install nano
 RUN apt-get -y install gcc
 RUN apt-get -y install sudo
@@ -63,16 +65,20 @@ COPY ProgEscape/man/nano /home/ProgEscape/man
 COPY ProgEscape/man/nice /home/ProgEscape/man
 COPY ProgEscape/man/who /home/ProgEscape/man
 #COPY ProgEscape/man/C /home/ProgEscape/man
+COPY start /bin/start
+COPY end /home/ProgEscape/bin/escape
 
 USER root
 RUN chmod 700 /home/ProgEscape/bin/escape
 RUN chmod 744 /home/ProgEscape/prog
+RUN chmod u+s /home/ProgEscape/bin/escape
 
 USER ProgEscape' > Dockerfile
 
 
 docker build -t ctf .
-sudo docker run --init --rm -v $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name ctf -i ctf
+docker run --init --rm -v --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name ctf --link api -i ctf 
 clear
+docker exec -u 0 ctf /bin/start &
 docker exec -u 0 ctf /bin/timer escape &
 docker exec -it ctf /bin/rbash

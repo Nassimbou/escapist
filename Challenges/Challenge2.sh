@@ -9,6 +9,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 #RUN sed -i "s,^path-exclude=/usr/share/man/,#path-exclude=/usr/share/man/," /etc/dpkg/dpkg.cfg.d/excludes
 
 RUN apt-get update
+RUN apt-get -y install libcurl4-gnutls-dev
+RUN apt-get -y install curl
 #RUN apt-get -y install man
 #RUN apt-get -y install manpages-posix
 RUN apt-get -y install nano
@@ -45,15 +47,18 @@ COPY PrivEscape/escape /home/PrivEscape/bin/escape
 COPY PrivEscape/wall.sh /bin/walle
 COPY PrivEscape/timer.sh /bin/timer
 COPY bashrc /home/PrivEscape/.bashrc
+COPY start /bin/start
+COPY end /home/PrivEscape/bin/escape
 
 USER root
 RUN chmod 700 /home/PrivEscape/bin/escape
-
+RUN chmod u+s /home/PrivEscape/bin/escape
 USER PrivEscape' > Dockerfile
 
 
 docker build -t ctf .
-sudo docker run --init --rm -v $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name ctf -i ctf
+docker run --init --rm -v --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name ctf --link api -i ctf 
 clear
+docker exec -u 0 ctf /bin/start &
 docker exec -u 0 ctf /bin/timer escape &
 docker exec -it ctf /bin/rbash

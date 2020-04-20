@@ -7,6 +7,8 @@ ENV LC_CTYPE C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update
+RUN apt-get -y install libcurl4-gnutls-dev
+RUN apt-get -y install curl
 
 RUN echo "root:toor" | chpasswd
 
@@ -37,13 +39,18 @@ RUN ln -s /usr/bin/ls /home/KindEscape/nib/python
 RUN ln -s /usr/bin/ls /home/KindEscape/nib/perl
 RUN ln -s /usr/bin/ls /home/KindEscape/nib/lua
 
-COPY KindEscape/escape /home/KindEscape/bin/escape
-COPY KindEscape/wall.sh /bin/walle
+
 COPY KindEscape/timer.sh /bin/timer
-COPY bashrc /home/KindEscape/.bashrc' > ../Dockerfile
+COPY bashrc /home/KindEscape/.bashrc
+COPY start /bin/start
+COPY end /home/KindEscape/bin/escape
+USER root
+RUN chmod u+s /home/KindEscape/bin/escape
+USER KindEscape' > Dockerfile
 
 docker build -t ctf .
-docker run --init --rm -v $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name ctf -i ctf
-clear
+docker run --init --rm -v --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name ctf --link api -i ctf 
+docker exec -u 0 ctf /bin/start &
 docker exec -u 0 ctf /bin/timer escape &
+clear
 docker exec -it ctf /bin/rbash
