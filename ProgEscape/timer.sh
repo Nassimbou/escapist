@@ -8,15 +8,15 @@ echo "while nice /bin/sleep 1;do nice /usr/bin/tput sc;nice /usr/bin/tput cup 0 
                  while [ $min -le 59 ]; do
 			if [ $min -eq 1 ]
 			then
-				/bin/walle "Le contenu du fichier prog semble très interessant"
+				echo "Le contenu du fichier prog semble très interessant" > /home/ProgEscape/indice1.txt
 			fi
 			if [ $min -eq 2 ]
 			then
-				/bin/walle "sudo -l pour savoir ce qu'on peut exécuter en mode privilégié"
+				echo "sudo -l pour savoir ce qu'on peut exécuter en mode privilégié" > /home/ProgEscape/indice2.txt
 			fi
 			if [ $min -eq 4 ]
 			then
-				/bin/walle "La fonction system(String command) en C permet d'exécuter une commande système"
+				echo "sudo -l pour savoir ce qu'on peut exécuter en mode privilégié" > /home/ProgEscape/indice3.txt
 			fi
                          while [ $sec -le  59 ]; do
                                  #echo -ne "$hour:$min:$sec\033[0K\r"
